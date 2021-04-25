@@ -1,8 +1,9 @@
-import './styles.css';
+import './css/main-styles.css';
+import './css/lightbox.css';
 import "@pnotify/core/dist/BrightTheme.css";
 import { error } from '@pnotify/core';
-import API from './fetchImage.js';
-import MODULE from './module.js';
+import API from './additianal-js/fetchImage.js';
+import MODULE from './additianal-js/module.js';
 import templateCard from './templates/card.hbs';
 
 import InfiniteScroll from 'infinite-scroll';
