@@ -37,6 +37,7 @@ ref.moduleOverlay.addEventListener('click', MODULE.onCloseModule);
 
 
 
+
 function onGalleryClick(event) {
     if (!event.target.classList.contains('card-image')) {
         return;
@@ -51,7 +52,8 @@ function onGalleryClick(event) {
 }
 
 
-function searchImg() {
+function searchImg(e) {
+
     userInput = ref.inputQuery.value;
     if (!userInput) {
         return;
@@ -68,6 +70,7 @@ function nextPage() {
 function clearGallery() {
     ref.loadBtn.classList.add('is-hidden');
     pageCount = 1;
+    userInput = '';
     while (ref.gallery.firstChild) {
         ref.gallery.removeChild(ref.gallery.lastChild);
     }
@@ -76,7 +79,6 @@ function clearGallery() {
 async function fetchGallery(userQuery, pageNumber, needScroll, scrollHeight) {
     try {
         const apiResponse = await API.fetchImage(userQuery, pageNumber, PAGINATION_NUMBER);
-        console.log(apiResponse);
         const cards = apiResponse.hits;
         if (cards.length === 0) {
             notification('No results');
